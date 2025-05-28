@@ -38,10 +38,8 @@ submit.addEventListener("click", function (e) {
       </div>`;
 
     // Add 2 second delay before resetting the form
-    setTimeout(() => {
-      form.reset();
-      nameCheck = phoneCheck = emailCheck = passwordCheck = false;
-    }, 1500);
+    form.reset();
+    nameCheck = phoneCheck = emailCheck = passwordCheck = false;
   } else {
     // Show error alert if any input is invalid
     alerts.innerHTML = `
