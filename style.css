@@ -1,0 +1,115 @@
+/* style.css */
+body {
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.container {
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #1a1a1a, #2e2e2e, #1a1a1a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 8px rgba(74, 0, 224, 0.2);
+}
+
+.form-label {
+  font-weight: 500;
+  color: #222;
+}
+
+.form-control,
+.form-select {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 10px rgba(166, 193, 238, 0.6);
+  border-color: #86b7fe;
+}
+
+::placeholder {
+  color: #666;
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background-color: #4e8cff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #256dff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.invalid-feedback {
+  font-size: 0.85rem;
+  color: #dc3545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    margin: 20px;
+  }
+}
+
+.github-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+
+.github-link a {
+  color: #4e73df;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.github-link a:hover {
+  text-decoration: underline;
+}
