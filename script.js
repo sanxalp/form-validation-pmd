@@ -36,9 +36,12 @@ submit.addEventListener("click", function (e) {
         <strong>Successfully</strong> submitted form
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>`;
-    // Clear input fields after successful submission
-    form.reset(); // ✅ Reset all fields
-    nameCheck = phoneCheck = emailCheck = passwordCheck = false;
+
+    // Add 2 second delay before resetting the form
+    setTimeout(() => {
+      form.reset();
+      nameCheck = phoneCheck = emailCheck = passwordCheck = false;
+    }, 1500);
   } else {
     // Show error alert if any input is invalid
     alerts.innerHTML = `
