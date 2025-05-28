@@ -29,7 +29,7 @@
       <br />
 
       <!-- Bootstrap grid form layout -->
-      <form class="row g-3">
+      <form class="row g-3" id="registrationForm">
         <!-- Name input -->
         <div class="col-md-6">
           <label for="inputName" class="form-label">Name</label>
@@ -133,9 +133,9 @@
             type="password"
             class="form-control"
             id="inputPassword"
-            placeholder="Enter your Password"
+            placeholder="Enter your Password (min 8 characters)"
           />
-          <div class="invalid-feedback">Please enter valid Password !</div>
+          <div class="invalid-feedback">Please enter a valid Password!</div>
         </div>
 
         <!-- Confirm password input -->
@@ -149,7 +149,7 @@
             id="inputConfirmPassword"
             placeholder="Re-enter your Password"
           />
-          <div class="invalid-feedback">Please enter valid Password !</div>
+          <div class="invalid-feedback">Passwords do not match!</div>
         </div>
 
         <!-- Register button -->

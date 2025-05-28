@@ -8,6 +8,11 @@ let nameCheck = false;
 let phoneCheck = false;
 let emailCheck = false;
 
+//Add new variables for password fields
+let password = document.getElementById("inputPassword");
+let confirmPassword = document.getElementById("inputConfirmPassword");
+let passwordCheck = false;
+
 // Attach blur event listeners to input fields for validation on losing focus
 names.addEventListener("blur", checkName);
 email.addEventListener("blur", checkEmail);
@@ -17,16 +22,23 @@ phoneNumber.addEventListener("blur", checkPhoneNumber);
 let submit = document.getElementById("submit");
 let alerts = document.getElementById("alert");
 
+// Add event listeners for password fields
+password.addEventListener("blur", checkPassword);
+confirmPassword.addEventListener("blur", checkConfirmPassword);
+
 // Handle form submission
 submit.addEventListener("click", function (e) {
   // Check if all validation flags are true
-  if (nameCheck && phoneCheck && emailCheck) {
+  if (nameCheck && phoneCheck && emailCheck && passwordCheck) {
     // Show success alert if all inputs are valid
     alerts.innerHTML = `
       <div id="alert" class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Successfully</strong> submitted form
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>`;
+    // Clear input fields after successful submission
+    form.reset(); // ✅ Reset all fields
+    nameCheck = phoneCheck = emailCheck = passwordCheck = false;
   } else {
     // Show error alert if any input is invalid
     alerts.innerHTML = `
@@ -87,5 +99,47 @@ function checkPhoneNumber() {
   } else {
     phoneCheck = false;
     phoneNumber.classList.add("is-invalid");
+  }
+}
+
+// Add password validation function
+function checkPassword() {
+  let str = password.value;
+  let userName = names.value.toLowerCase();
+
+  // Check password requirements
+  if (str.length < 8) {
+    password.classList.add("is-invalid");
+    password.nextElementSibling.innerHTML =
+      "Password must be at least 8 characters long!";
+    passwordCheck = false;
+  } else if (str.toLowerCase() === "password") {
+    password.classList.add("is-invalid");
+    password.nextElementSibling.innerHTML = "Password cannot be 'password'!";
+    passwordCheck = false;
+  } else if (str.toLowerCase() === userName) {
+    password.classList.add("is-invalid");
+    password.nextElementSibling.innerHTML = "Password cannot be your name!";
+    passwordCheck = false;
+  } else {
+    password.classList.remove("is-invalid");
+    passwordCheck = true;
+    checkConfirmPassword(); // Check confirm password when password is valid
+  }
+}
+
+// Add confirm password validation function
+function checkConfirmPassword() {
+  let confirmStr = confirmPassword.value;
+  let passwordStr = password.value;
+
+  if (confirmStr !== passwordStr) {
+    confirmPassword.classList.add("is-invalid");
+    confirmPassword.nextElementSibling.innerHTML = "Passwords do not match!";
+    passwordCheck = false;
+  } else if (passwordCheck) {
+    // Only validate if the main password is valid
+    confirmPassword.classList.remove("is-invalid");
+    passwordCheck = true;
   }
 }
